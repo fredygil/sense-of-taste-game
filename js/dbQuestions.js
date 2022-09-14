@@ -237,7 +237,7 @@ export const questions = [
           correct: false,
         },
       ],
-      img: "./assets/honey.jpg",
+      img: "./assets/honey.jpeg",
       objectFit: "contain",
     },
     {
