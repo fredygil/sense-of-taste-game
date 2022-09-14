@@ -47,7 +47,12 @@ class Game {
   }
 
   getQuestion() {
-    const questionsArray = questions[this.gameState.getQuestionLevel()];
+    console.log("questions", questions);
+    console.log(
+      "this.gameState.getQuestionLevel()",
+      this.gameState.getQuestionLevel()
+    );
+    const questionsArray = questions[0];
     const numberQuestion = Math.floor(Math.random() * questionsArray.length);
     return questionsArray[numberQuestion];
   }

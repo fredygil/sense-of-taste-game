@@ -19,14 +19,14 @@ export class GameView {
     const container = document.getElementById("container");
     // Se crea el titulo
     const gameTitleH1 = document.createElement("h1");
-    gameTitleH1.textContent = "QUIÉN QUIERE SER MILLONARIO?";
+    gameTitleH1.textContent = "WHO WANTS TO BE MILLIONAIRE?";
     // Se crea el intro del juego
     const sectionIntro = document.createElement("section");
     sectionIntro.id = "intro";
     sectionIntro.classList.add("inactiveSection");
     const sectionIntroBtn = document.createElement("button");
     sectionIntroBtn.classList.add("btn", "btnIntro");
-    sectionIntroBtn.textContent = "Empezar a jugar";
+    sectionIntroBtn.textContent = "Start Game";
     sectionIntroBtn.addEventListener("click", () => {
       this.gameState.setCurrentSection("start-question");
     });
@@ -37,7 +37,7 @@ export class GameView {
   createViewStartQuestion() {
     //Se crea la seccion de start-question
     const sectionStartQuestionTitleH1 = document.createElement("h1");
-    sectionStartQuestionTitleH1.textContent = "QUIÉN QUIERE SER MILLONARIO?";
+    sectionStartQuestionTitleH1.textContent = "WHO WANTS TO BE MILLIONAIRE?";
     const sectionStartQuestion = document.createElement("section");
     sectionStartQuestion.id = "start-question";
     sectionStartQuestion.classList.add("inactiveSection");
@@ -45,13 +45,13 @@ export class GameView {
     sectionStartQuestionDiv.classList.add("btnStartQuestion");
     const sectionStartQuestionBtnNumber = document.createElement("button");
     sectionStartQuestionBtnNumber.classList.add("btnGame", "btnQuestionNumber");
-    sectionStartQuestionBtnNumber.textContent = "Pregunta 1";
+    sectionStartQuestionBtnNumber.textContent = "Question 1";
     const sectionStartQuestionBtnPrize = document.createElement("button");
     sectionStartQuestionBtnPrize.classList.add("btnGame", "btnQuestionPrize");
     sectionStartQuestionBtnPrize.textContent = "$100.000";
     const sectionStartQuestionBtnPlay = document.createElement("button");
     sectionStartQuestionBtnPlay.classList.add("btnGame", "btnQuestionPlay");
-    sectionStartQuestionBtnPlay.textContent = "Jugar";
+    sectionStartQuestionBtnPlay.textContent = "Play";
     sectionStartQuestionBtnPlay.addEventListener("click", () => {
       this.gameState.setCurrentSection("question");
     });
@@ -74,7 +74,7 @@ export class GameView {
     sectionQuestion.id = "question";
     sectionQuestion.classList.add("inactiveSection");
     const sectionQuestionTitleH1 = document.createElement("h1");
-    sectionQuestionTitleH1.textContent = "QUIÉN QUIERE SER MILLONARIO?";
+    sectionQuestionTitleH1.textContent = "WHO WANTS TO BE MILLIONAIRE?";
     const sectionQuestionBtnQuestionTitle = document.createElement("button");
     sectionQuestionBtnQuestionTitle.classList.add(
       "btnQuestionTitle",
@@ -83,6 +83,9 @@ export class GameView {
     sectionQuestionBtnQuestionTitle.textContent = "";
     const sectionQuestionDiv = document.createElement("div");
     sectionQuestionDiv.classList.add("btnQuestion");
+
+    const sectionQuestionImg = document.createElement("img");
+    sectionQuestionImg.id = "questionImg";
 
     const sectionQuestionBtnQuestionA = document.createElement("button");
     sectionQuestionBtnQuestionA.classList.add("btnGame", "btnOption");
@@ -149,6 +152,7 @@ export class GameView {
 
     sectionQuestion.append(
       sectionQuestionTitleH1,
+      sectionQuestionImg,
       sectionQuestionBtnQuestionTitle,
       sectionQuestionDiv
     );
@@ -160,7 +164,7 @@ export class GameView {
     sectionAnswer.id = "answer";
     sectionAnswer.classList.add("inactiveSection");
     const sectionAnswerTitleH1 = document.createElement("h1");
-    sectionAnswerTitleH1.textContent = "QUIÉN QUIERE SER MILLONARIO?";
+    sectionAnswerTitleH1.textContent = "WHO WANTS TO BE MILLIONAIRE?";
     const sectionAnswernBtnQuestionTitle = document.createElement("button");
     sectionAnswernBtnQuestionTitle.classList.add("btnGame", "btnQuestionTitle");
     sectionAnswernBtnQuestionTitle.textContent =
@@ -214,7 +218,7 @@ export class GameView {
 
     const sectionAnswerBtnPlay = document.createElement("button");
     sectionAnswerBtnPlay.classList.add("btn", "btnQuestionPlay");
-    sectionAnswerBtnPlay.textContent = "Siguiente";
+    sectionAnswerBtnPlay.textContent = "Next";
     sectionAnswerBtnPlay.addEventListener("click", () => {
       this.gameState.events.onPlayNext();
     });
@@ -239,7 +243,7 @@ export class GameView {
     sectionWin.id = "win";
     sectionWin.classList.add("inactiveSection");
     const sectionWinTitleH1 = document.createElement("h1");
-    sectionWinTitleH1.textContent = "HAS GANADO!";
+    sectionWinTitleH1.textContent = "YOU WIN! 🎉🤩🥳🏆";
     const sectionWinDiv = document.createElement("div");
     sectionWinDiv.classList.add("btnStartQuestion");
     const sectionWinBtn = document.createElement("button");
@@ -247,7 +251,7 @@ export class GameView {
     sectionWinBtn.textContent = `$ ${this.gameState.prizes[4]}`;
     const sectionWinBtnPlayAgain = document.createElement("button");
     sectionWinBtnPlayAgain.classList.add("btn", "btnPlayAgain");
-    sectionWinBtnPlayAgain.textContent = "Volver a empezar";
+    sectionWinBtnPlayAgain.textContent = "Start over";
     sectionWinBtnPlayAgain.addEventListener("click", () => {
       this.gameState.reset();
       this.gameState.setCurrentSection("intro");
@@ -263,10 +267,10 @@ export class GameView {
     sectionLose.id = "lose";
     sectionLose.classList.add("inactiveSection");
     const sectionLoseTitleH1 = document.createElement("h1");
-    sectionLoseTitleH1.textContent = "HAS PERDIDO";
+    sectionLoseTitleH1.textContent = "YOU LOSE 😭";
     const sectionLoseBtnPlayAgain = document.createElement("button");
     sectionLoseBtnPlayAgain.classList.add("btn", "btnPlayAgain");
-    sectionLoseBtnPlayAgain.textContent = "Volver a empezar";
+    sectionLoseBtnPlayAgain.textContent = "Start over";
     sectionLoseBtnPlayAgain.addEventListener("click", () => {
       this.gameState.reset();
       this.gameState.setCurrentSection("intro");
@@ -282,9 +286,13 @@ export class GameView {
     const buttonTitle = document.querySelector(
       "#question button.btnQuestionTitle"
     );
+    const questionImg = document.querySelector("#questionImg");
     const question = this.gameState.getQuestion();
     if (buttonTitle) {
       buttonTitle.textContent = question.title;
+    }
+    if (questionImg) {
+      questionImg.src = question.img;
     }
     // Busca el boton de las respuestas
     const spanFirstAnswer = document.querySelector(
@@ -310,7 +318,7 @@ export class GameView {
       "#answer button.btnQuestionTitle"
     );
     const question = this.gameState.getQuestion();
-    console.log(question)
+    console.log(question);
     if (buttonTitle) {
       buttonTitle.textContent = question.title;
     }
@@ -359,7 +367,7 @@ export class GameView {
     const btnQuestionNumber = document.querySelector(
       "#start-question > div > button.btnGame.btnQuestionNumber"
     );
-    btnQuestionNumber.textContent = `Pregunta ${
+    btnQuestionNumber.textContent = `Question ${
       this.gameState.getQuestionLevel() + 1
     } `;
     const btnQuestionPrize = document.querySelector(
