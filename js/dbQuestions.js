@@ -105,7 +105,7 @@ export const questions = [
       },
       {
         text: "Sour",
-        correct: true,
+        correct: false,
       },
       {
         text: "Sweet",
@@ -113,7 +113,7 @@ export const questions = [
       },
       {
         text: "Bitter",
-        correct: false,
+        correct: true,
       },
     ],
     img: "./assets/chocolate.jpeg",
