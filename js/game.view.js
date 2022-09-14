@@ -318,7 +318,6 @@ export class GameView {
       "#answer button.btnQuestionTitle"
     );
     const question = this.gameState.getQuestion();
-    console.log(question);
     if (buttonTitle) {
       buttonTitle.textContent = question.title;
     }
