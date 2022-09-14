@@ -146,7 +146,7 @@ export const questions = [
     },
     {
       category: "Sense of Taste",
-      title: "What does (this coffee) taste like?",
+      title: "What does (this fries) taste like?",
       answer: [
         {
           text: "Salty",
