@@ -1,7 +1,7 @@
 export const questions = [
   {
     category: "Sense of Taste",
-    title: "What does (this cake) taste like?",
+    title: "What does (this dessert) taste like?",
     answer: [
       {
         text: "Salty",
@@ -57,7 +57,7 @@ export const questions = [
       },
       {
         text: "Sour",
-        correct: false,
+        correct: true,
       },
       {
         text: "Sweet",
@@ -121,7 +121,7 @@ export const questions = [
   },
   {
     category: "Sense of Taste",
-    title: "What does (this cake) taste like?",
+    title: "What does (this coffee) taste like?",
     answer: [
       {
         text: "Salty",
