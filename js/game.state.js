@@ -28,6 +28,7 @@ class GameState {
     this.selectedAnswer = undefined;
     this.question = {};
     this.isCorrectAnswer = false;
+    this.events.onReset();
     this.saveToStorage();
   }
 

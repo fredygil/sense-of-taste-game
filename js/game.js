@@ -5,8 +5,10 @@ import { GameState } from "./game.state.js";
 class Game {
   gameView;
   gameState;
+  unusedQuestions;
 
   start() {
+    this.unusedQuestions = questions.map((q) => q);
     this.gameView = new GameView();
     this.gameState = new GameState();
     this.gameView.setState(this.gameState);
@@ -25,6 +27,9 @@ class Game {
       },
       onPlayNext: () => {
         this.playNext();
+      },
+      onReset: () => {
+        this.unusedQuestions = questions.map((q) => q);
       },
     };
     this.gameState.setEvents(events);
@@ -47,9 +52,12 @@ class Game {
   }
 
   getQuestion() {
-    const questionsArray = questions[0];
-    const numberQuestion = Math.floor(Math.random() * questionsArray.length);
-    return questionsArray[numberQuestion];
+    const numberQuestion = Math.floor(
+      Math.random() * this.unusedQuestions.length
+    );
+    const question = this.unusedQuestions[numberQuestion];
+    this.unusedQuestions.splice(numberQuestion, 1);
+    return question;
   }
 
   playNext() {
